@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=3 uid="uid://cxtxpqc65svfw"]
+
+[ext_resource type="Script" path="res://scripts/ui/virtual_joystick.gd" id="1_8btq2"]
+
+[node name="VirtualJoystick" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 160.0
+offset_bottom = 160.0
+mouse_filter = 2
+script = ExtResource("1_8btq2")
+
+[node name="Base" type="Panel" parent="."]
+modulate = Color(1, 1, 1, 0.3)
+layout_mode = 0
+offset_right = 160.0
+offset_bottom = 160.0
+mouse_filter = 2
+
+[node name="Stick" type="Panel" parent="Base"]
+modulate = Color(1, 1, 1, 0.6)
+layout_mode = 0
+offset_left = 52.0
+offset_top = 52.0
+offset_right = 108.0
+offset_bottom = 108.0
+mouse_filter = 2

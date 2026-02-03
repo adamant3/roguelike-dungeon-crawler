@@ -1,0 +1,5 @@
+# This file tells Godot to ignore importing files from these directories
+# Godot will not scan these folders for assets
+
+.git
+.github
