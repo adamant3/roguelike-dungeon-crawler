@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://cw1s3cj3rnpv3"]
+
+[ext_resource type="PackedScene" uid="uid://drvxmfu1qfejd" path="res://scenes/levels/test_level.tscn" id="1_level"]
+[ext_resource type="PackedScene" uid="uid://cdjyftpu2mlxq" path="res://scenes/player/player.tscn" id="2_player"]
+[ext_resource type="PackedScene" uid="uid://c4q3wyvh6ijr7" path="res://scenes/ui/virtual_joystick.tscn" id="3_joystick"]
+
+[node name="Main" type="Node2D"]
+
+[node name="TestLevel" parent="." instance=ExtResource("1_level")]
+
+[node name="Player" parent="." instance=ExtResource("2_player")]
+position = Vector2(240, 144)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="VirtualJoystick" parent="CanvasLayer" instance=ExtResource("3_joystick")]
+offset_left = 20.0
+offset_top = 260.0
+offset_right = 220.0
+offset_bottom = 460.0

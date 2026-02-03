@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=3 uid="uid://c4q3wyvh6ijr7"]
+
+[ext_resource type="Script" path="res://scripts/systems/virtual_joystick.gd" id="1_vjoystick"]
+
+[node name="VirtualJoystick" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 200.0
+offset_bottom = 200.0
+script = ExtResource("1_vjoystick")
+
+[node name="JoystickBase" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 40.0
+offset_right = 140.0
+offset_bottom = 140.0
+color = Color(0.3, 0.3, 0.3, 0.4)
+
+[node name="JoystickKnob" type="ColorRect" parent="JoystickBase"]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 25.0
+offset_right = 75.0
+offset_bottom = 75.0
+color = Color(0.5, 0.5, 0.5, 0.7)
