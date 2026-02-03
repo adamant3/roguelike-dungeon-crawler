@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://c3rh1ocauhvlg"]
+
+[ext_resource type="Script" path="res://scripts/ui/action_button.gd" id="1_uyafy"]
+
+[node name="ActionButton" type="Button"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -140.0
+offset_top = -140.0
+offset_right = -20.0
+offset_bottom = -20.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "ACTION"
+script = ExtResource("1_uyafy")

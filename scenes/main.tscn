@@ -1,0 +1,91 @@
+[gd_scene load_steps=10 format=3 uid="uid://cyy5wgnqq0qrb"]
+
+[ext_resource type="Script" path="res://scripts/systems/main.gd" id="1_main"]
+[ext_resource type="PackedScene" uid="uid://c0u8yxr1xeegr" path="res://scenes/player/player.tscn" id="2_player"]
+[ext_resource type="PackedScene" uid="uid://dwcxu4lv1vq6i" path="res://scenes/ui/virtual_joystick.tscn" id="3_joystick"]
+[ext_resource type="PackedScene" uid="uid://c3rh1ocauhvlg" path="res://scenes/ui/action_button.tscn" id="4_action"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_top"]
+size = Vector2(1280, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bottom"]
+size = Vector2(1280, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_left"]
+size = Vector2(32, 720)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_right"]
+size = Vector2(32, 720)
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_main")
+
+[node name="Floor" type="ColorRect" parent="."]
+offset_left = 32.0
+offset_top = 32.0
+offset_right = 1248.0
+offset_bottom = 688.0
+color = Color(0.15, 0.15, 0.2, 1)
+
+[node name="Walls" type="Node2D" parent="."]
+
+[node name="TopWall" type="StaticBody2D" parent="Walls"]
+position = Vector2(640, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/TopWall"]
+shape = SubResource("RectangleShape2D_top")
+
+[node name="ColorRect" type="ColorRect" parent="Walls/TopWall"]
+offset_left = -640.0
+offset_top = -16.0
+offset_right = 640.0
+offset_bottom = 16.0
+color = Color(0.3, 0.3, 0.3, 1)
+
+[node name="BottomWall" type="StaticBody2D" parent="Walls"]
+position = Vector2(640, 704)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/BottomWall"]
+shape = SubResource("RectangleShape2D_bottom")
+
+[node name="ColorRect" type="ColorRect" parent="Walls/BottomWall"]
+offset_left = -640.0
+offset_top = -16.0
+offset_right = 640.0
+offset_bottom = 16.0
+color = Color(0.3, 0.3, 0.3, 1)
+
+[node name="LeftWall" type="StaticBody2D" parent="Walls"]
+position = Vector2(16, 360)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/LeftWall"]
+shape = SubResource("RectangleShape2D_left")
+
+[node name="ColorRect" type="ColorRect" parent="Walls/LeftWall"]
+offset_left = -16.0
+offset_top = -360.0
+offset_right = 16.0
+offset_bottom = 360.0
+color = Color(0.3, 0.3, 0.3, 1)
+
+[node name="RightWall" type="StaticBody2D" parent="Walls"]
+position = Vector2(1264, 360)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/RightWall"]
+shape = SubResource("RectangleShape2D_right")
+
+[node name="ColorRect" type="ColorRect" parent="Walls/RightWall"]
+offset_left = -16.0
+offset_top = -360.0
+offset_right = 16.0
+offset_bottom = 360.0
+color = Color(0.3, 0.3, 0.3, 1)
+
+[node name="Player" parent="." instance=ExtResource("2_player")]
+position = Vector2(640, 360)
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="VirtualJoystick" parent="UI" instance=ExtResource("3_joystick")]
+
+[node name="ActionButton" parent="UI" instance=ExtResource("4_action")]
