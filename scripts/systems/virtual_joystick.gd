@@ -19,6 +19,11 @@ var base_position: Vector2 = Vector2.ZERO
 var joystick_direction: Vector2 = Vector2.ZERO
 
 func _ready() -> void:
+	# Validate max_distance is positive to avoid division by zero
+	if max_distance <= 0.0:
+		max_distance = 50.0
+		push_warning("VirtualJoystick: max_distance must be positive, defaulting to 50.0")
+	
 	# Hide joystick on PC (non-touch devices)
 	if not OS.has_feature("mobile"):
 		visible = false
