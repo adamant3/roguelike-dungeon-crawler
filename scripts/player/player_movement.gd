@@ -24,7 +24,7 @@ func _ready():
 	# Set up any initialization here
 	pass
 
-func _physics_process(delta: float):
+func _physics_process(_delta: float):
 	"""Called every physics frame (default 60 times per second)
 	
 	Args:

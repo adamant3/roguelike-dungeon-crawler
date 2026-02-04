@@ -10,9 +10,10 @@ extends Control
 
 func _ready():
 	"""Initialize mobile controls based on platform"""
-	# Check if we're on a mobile platform
-	if OS.has_feature("mobile") or OS.has_feature("web_android") or OS.has_feature("web_ios"):
-		# Mobile device - show controls
+	# Check if we have a touchscreen (mobile/tablet device)
+	# This is more reliable than OS.has_feature() which doesn't work well for web exports
+	if DisplayServer.is_touchscreen_available():
+		# Touch device - show controls
 		show_controls()
 	else:
 		# PC/Desktop - hide controls

@@ -73,10 +73,11 @@ A 2D roguelike dungeon crawler game built with Godot 4.x featuring pixel art gra
 
 ### Pixel Art Configuration
 The game is configured for pixel-perfect rendering:
-- Base resolution: 320x180 (16:9 aspect ratio)
-- Window scales up to 1280x720 by default
-- Texture filtering: Nearest neighbor (no blur)
-- Stretch mode: canvas_items (maintains pixel art look)
+- Base resolution: 1920x1080 (Full HD, 16:9 aspect ratio)
+- Scales to any screen size (PC and mobile)
+- Texture filtering: Nearest neighbor for sprites (crisp pixel art)
+- UI and text render at full resolution (not pixelated)
+- Stretch mode: canvas_items (proper scaling)
 
 ### Player Movement
 The player uses a `CharacterBody2D` with:
@@ -86,10 +87,12 @@ The player uses a `CharacterBody2D` with:
 - Support for both digital (keyboard) and analog (gamepad/touch) input
 
 ### Mobile Support
-Mobile controls automatically show/hide based on platform detection:
+Mobile controls automatically show/hide based on touchscreen detection:
+- Uses DisplayServer.is_touchscreen_available() for accurate detection
 - Virtual joystick for movement (bottom-left)
 - Action buttons for attacks/interactions (bottom-right)
 - Touch-friendly sizes and spacing
+- Only appears on mobile/tablet devices with touchscreens
 
 ## Customization
 
