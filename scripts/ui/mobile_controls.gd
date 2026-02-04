@@ -1,4 +1,4 @@
-extends Control
+extends CanvasLayer
 ## Mobile Controls Manager
 ##
 ## This script manages the virtual joystick and action buttons for mobile devices.
