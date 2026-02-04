@@ -37,8 +37,8 @@ Player scene created with all required components:
 - [x] GDScript movement system (player_movement.gd):
   - [x] 8-directional movement support
   - [x] Configurable speed (export variable: 100.0 pixels/second)
-  - [x] Smooth acceleration (export variable: 0.15)
-  - [x] Smooth deceleration/friction (export variable: 0.25)
+  - [x] Instant, responsive movement (no acceleration delay)
+  - [x] Normalized diagonal movement
   - [x] Well-commented code with docstrings explaining each function
   - [x] Beginner-friendly explanations
 
@@ -128,7 +128,7 @@ When opening in Godot 4.x:
    - Window opens at 1280x720
    - Test room loads with player in center
    - Player can move with WASD or arrow keys
-   - Movement is smooth with acceleration/deceleration
+   - Movement is smooth with instant response
    - Camera follows player smoothly
    - Mobile controls are hidden on PC
 

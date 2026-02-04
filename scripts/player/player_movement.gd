@@ -8,14 +8,6 @@ extends CharacterBody2D
 ## Exported variable means you can change this value in the Godot editor
 @export var speed: float = 100.0
 
-## How quickly the player accelerates (0-1, where 1 = instant)
-## Lower values create smoother, more realistic movement
-@export var acceleration: float = 0.15
-
-## How quickly the player decelerates when no input is given (0-1)
-## Higher values make the character stop more quickly
-@export var friction: float = 0.25
-
 # Current velocity - this is automatically used by move_and_slide()
 # No need to declare it as it's built into CharacterBody2D
 
@@ -34,14 +26,12 @@ func _physics_process(_delta: float):
 	var input_vector = get_input_vector()
 	
 	# Apply movement based on input
+	# Normalize to prevent faster diagonal movement
 	if input_vector.length() > 0:
-		# Player is trying to move - accelerate towards target velocity
-		# normalize() ensures diagonal movement isn't faster than cardinal movement
-		# lerp() smoothly interpolates between current velocity and target velocity
-		velocity = velocity.lerp(input_vector.normalized() * speed, acceleration)
-	else:
-		# No input - apply friction to slow down
-		velocity = velocity.lerp(Vector2.ZERO, friction)
+		input_vector = input_vector.normalized()
+	
+	# Apply movement instantly for responsive controls
+	velocity = input_vector * speed
 	
 	# Move the character using Godot's built-in physics
 	# This handles collisions automatically
