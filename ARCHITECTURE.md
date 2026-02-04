@@ -25,9 +25,10 @@ main.tscn (Entry Point)
 
 ### Player Movement (player_movement.gd)
 - Extends: `CharacterBody2D`
-- Handles: 8-directional movement with smooth acceleration/deceleration
-- Exports: speed, acceleration, friction
+- Handles: 8-directional movement with instant, responsive controls
+- Exports: speed
 - Input: Reads from Input actions (move_up, move_down, move_left, move_right)
+- Features: Normalized diagonal movement for consistent speed
 
 ### Mobile Controls (mobile_controls.gd)
 - Extends: `Control`

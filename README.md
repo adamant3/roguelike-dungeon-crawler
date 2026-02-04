@@ -11,7 +11,7 @@ A 2D roguelike dungeon crawler game built with Godot 4.x featuring pixel art gra
 ## Features
 
 - **Pixel-perfect graphics**: All sprites rendered with nearest-neighbor filtering for crisp pixel art
-- **8-directional movement**: Smooth character movement with acceleration and deceleration
+- **8-directional movement**: Smooth, instant character movement with no acceleration delay
 - **Cross-platform**: Supports both PC (keyboard/mouse) and Mobile (touch controls)
 - **Mobile controls**: Virtual joystick and action buttons that auto-show on mobile devices
 - **Camera system**: Smooth following camera with pixel-perfect positioning
@@ -82,8 +82,9 @@ The game is configured for pixel-perfect rendering:
 ### Player Movement
 The player uses a `CharacterBody2D` with:
 - Configurable speed (default: 100 pixels/second)
-- Smooth acceleration (lerp factor: 0.15)
-- Smooth deceleration/friction (lerp factor: 0.25)
+- Instant, responsive movement with no acceleration delay
+- 8-directional movement (supports diagonal movement)
+- Normalized diagonal movement (prevents faster diagonal speed)
 - Support for both digital (keyboard) and analog (gamepad/touch) input
 
 ### Mobile Support
