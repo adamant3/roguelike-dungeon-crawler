@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://j5k6l7m8n9o0p1q2"]
+
+[ext_resource type="PackedScene" uid="uid://f9g0h1i2j3k4l5m6" path="res://scenes/levels/test_room.tscn" id="1_test_room"]
+[ext_resource type="PackedScene" uid="uid://b7c8d9e0f1g2h3i4" path="res://scenes/ui/mobile_controls.tscn" id="2_mobile"]
+
+[node name="Main" type="Node"]
+
+[node name="TestRoom" parent="." instance=ExtResource("1_test_room")]
+
+[node name="MobileControls" parent="." instance=ExtResource("2_mobile")]
