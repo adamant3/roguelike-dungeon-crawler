@@ -25,10 +25,6 @@ window/size/window_height_override=720
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
-[gui]
-
-theme/custom_font="res://assets/fonts/default_font.tres"
-
 [input]
 
 move_up={

@@ -2,6 +2,9 @@
 
 A 2D roguelike dungeon crawler game built with Godot 4.x featuring pixel art graphics and real-time action gameplay.
 
+![Game Preview](game_preview.png)
+*Test room with player character in the center*
+
 ## Features
 
 - **Pixel-perfect graphics**: All sprites rendered with nearest-neighbor filtering for crisp pixel art
