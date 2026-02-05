@@ -1,4 +1,4 @@
-extends CharacterBody2D
+eextends CharacterBody2D
 
 @export var speed: float = 200.0  # Movement speed
 
@@ -24,7 +24,7 @@ func get_input() -> Vector2:
 
     return move_vector
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
     # Get the normalized directional input
     velocity = get_input() * speed
 
