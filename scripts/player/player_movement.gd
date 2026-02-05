@@ -17,25 +17,38 @@ func _ready():
 	pass
 
 func _physics_process(_delta: float):
-	"""Called every physics frame (default 60 times per second)
-	
-	Args:
-		delta: Time elapsed since the previous frame (usually ~0.016 seconds)
-	"""
-	# Get input direction from keyboard/controller
-	var input_vector = get_input_vector()
-	
-	# Apply movement based on input
-	# Normalize to prevent faster diagonal movement
-	if input_vector.length() > 0:
-		input_vector = input_vector.normalized()
-	
-	# Apply movement instantly for responsive controls
-	velocity = input_vector * speed
-	
-	# Move the character using Godot's built-in physics
-	# This handles collisions automatically
-	move_and_slide()
+extends CharacterBody2D  # or replace with your node type
+
+# Set your desired movement speed (pixels per second)
+var speed := 120
+
+func _physics_process(delta):
+    var move_vector := Vector2.ZERO
+
+    # Fetch input for each axis
+    var up = Input.is_action_pressed("move_up")
+    var down = Input.is_action_pressed("move_down")
+    var left = Input.is_action_pressed("move_left")
+    var right = Input.is_action_pressed("move_right")
+
+    # Calculate movement direction
+    move_vector.y -= int(up)
+    move_vector.y += int(down)
+    move_vector.x -= int(left)
+    move_vector.x += int(right)
+
+    # Opposing keys cancel movement on axis
+    # If both up/down or both left/right, result is zero for that axis
+
+    # Normalize to prevent faster diagonal movement
+    if move_vector.length() > 0:
+        move_vector = move_vector.normalized()
+
+    # Apply velocity
+    velocity = move_vector * speed
+
+    # Move and slide (if using CharacterBody2D)
+    move_and_slide()
 
 func get_input_vector() -> Vector2:
 	"""Get the movement input from keyboard/gamepad/touch controls
