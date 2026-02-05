@@ -1,30 +1,32 @@
 extends CharacterBody2D
 
-@export var speed: int = 200  # Movement speed value
-var velocity: Vector2 = Vector2.ZERO  # Holds current velocity
+@export var speed: float = 200.0  # Movement speed
 
-func get_input() -> void:
+func get_input() -> Vector2:
     """
-    Processes input from directional actions and calculates the velocity vector.
-    Opposing inputs cancel each other out.
+    Calculate velocity based on directional input (W/A/S/D or Arrow Keys).
     """
-    velocity = Vector2()  # Reset velocity every frame
+    var move_vector: Vector2 = Vector2.ZERO  # Clear existing velocity each frame
+
+    # Add direction for each key press
     if Input.is_action_pressed("move_right"):  # D or Right Arrow
-        velocity.x += 1
+        move_vector.x += 1
     if Input.is_action_pressed("move_left"):  # A or Left Arrow
-        velocity.x -= 1
+        move_vector.x -= 1
     if Input.is_action_pressed("move_down"):  # S or Down Arrow
-        velocity.y += 1
+        move_vector.y += 1
     if Input.is_action_pressed("move_up"):  # W or Up Arrow
-        velocity.y -= 1
+        move_vector.y -= 1
 
-    # Normalize for consistent speed in all directions (especially diagonals)
-    if velocity.length() > 0:
-        velocity = velocity.normalized() * speed
+    # Normalize to maintain constant speed when moving diagonally
+    if move_vector.length() > 0:
+        move_vector = move_vector.normalized()
+
+    return move_vector
 
 func _physics_process(delta: float) -> void:
-    # Update the velocity based on inputs
-    get_input()
+    # Get the normalized directional input
+    velocity = get_input() * speed
 
-    # Move the player with the computed velocity
-    move_and_slide(velocity)
+    # Use move_and_slide; no arguments because velocity is handled automatically
+    move_and_slide()
