@@ -6,7 +6,7 @@ extends CharacterBody2D
 
 ## Movement speed in pixels per second
 ## Exported variable means you can change this value in the Godot editor
-@export var speed: float = 100.0
+@export var speed: float = 300.0
 
 # Current velocity - this is automatically used by move_and_slide()
 # No need to declare it as it's built into CharacterBody2D
