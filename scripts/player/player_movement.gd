@@ -1,13 +1,30 @@
 extends CharacterBody2D
 
-@export var speed: float = 200.0  # Movement speed, change as desired.
+@export var speed: int = 200  # Movement speed value
+var velocity: Vector2 = Vector2.ZERO  # Holds current velocity
+
+func get_input() -> void:
+    """
+    Processes input from directional actions and calculates the velocity vector.
+    Opposing inputs cancel each other out.
+    """
+    velocity = Vector2()  # Reset velocity every frame
+    if Input.is_action_pressed("move_right"):  # D or Right Arrow
+        velocity.x += 1
+    if Input.is_action_pressed("move_left"):  # A or Left Arrow
+        velocity.x -= 1
+    if Input.is_action_pressed("move_down"):  # S or Down Arrow
+        velocity.y += 1
+    if Input.is_action_pressed("move_up"):  # W or Up Arrow
+        velocity.y -= 1
+
+    # Normalize for consistent speed in all directions (especially diagonals)
+    if velocity.length() > 0:
+        velocity = velocity.normalized() * speed
 
 func _physics_process(delta: float) -> void:
-	# Use Input.get_vector() to combine and normalize input
-	var direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+    # Update the velocity based on inputs
+    get_input()
 
-	# Apply velocity based on normalized direction
-	velocity = direction * speed
-
-	# Use move_and_slide to handle collisions
-	move_and_slide()
+    # Move the player with the computed velocity
+    move_and_slide(velocity)
