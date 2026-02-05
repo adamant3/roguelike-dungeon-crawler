@@ -17,12 +17,7 @@ func _ready():
 	pass
 
 func _physics_process(_delta: float):
-extends CharacterBody2D  # or replace with your node type
 
-# Set your desired movement speed (pixels per second)
-var speed := 120
-
-func _physics_process(delta):
     var move_vector := Vector2.ZERO
 
     # Fetch input for each axis
