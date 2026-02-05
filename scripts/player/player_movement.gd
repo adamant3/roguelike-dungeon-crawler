@@ -17,32 +17,23 @@ func _ready():
 	pass
 
 func _physics_process(_delta: float):
-
     var move_vector := Vector2.ZERO
 
-    # Fetch input for each axis
-    var up = Input.is_action_pressed("move_up")
-    var down = Input.is_action_pressed("move_down")
-    var left = Input.is_action_pressed("move_left")
-    var right = Input.is_action_pressed("move_right")
+    # Add up axis input EVERY frame, including held keys:
+    move_vector.x = int(Input.is_action_pressed("move_right")) - int(Input.is_action_pressed("move_left"))
+    move_vector.y = int(Input.is_action_pressed("move_down")) - int(Input.is_action_pressed("move_up"))
 
-    # Calculate movement direction
-    move_vector.y -= int(up)
-    move_vector.y += int(down)
-    move_vector.x -= int(left)
-    move_vector.x += int(right)
+    # Vector addition: +1 if right, -1 if left, 0 if neither or both (cancel out)
+    # Same for up/down!
+    # E.g., Hold A, then add/hold W → (-1, -1) = up-left, release A, now only (0, -1) = up, etc.
 
-    # Opposing keys cancel movement on axis
-    # If both up/down or both left/right, result is zero for that axis
-
-    # Normalize to prevent faster diagonal movement
+    # Only normalize and move if there's some input
     if move_vector.length() > 0:
         move_vector = move_vector.normalized()
+        velocity = move_vector * speed
+    else:
+        velocity = Vector2.ZERO
 
-    # Apply velocity
-    velocity = move_vector * speed
-
-    # Move and slide (if using CharacterBody2D)
     move_and_slide()
 
 func get_input_vector() -> Vector2:
